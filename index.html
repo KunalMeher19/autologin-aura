@@ -44,8 +44,9 @@
   </div>
 
   <script>
-    const email = "test@test.com";      // ← change this
-    const password = "test"; // ← change this
+    // Set your test credentials here
+    const email = "test@test.com";
+    const password = "test";
 
     async function doLogin() {
       try {
@@ -55,14 +56,11 @@
             "Content-Type": "application/json"
           },
           body: JSON.stringify({ email, password }),
-          credentials: "include"   // important → accepts JWT cookie
+          credentials: "include"
         });
 
         if (res.ok) {
-          // Optional: read response
-          try { await res.json(); } catch(e) {}
-
-          // Redirect after successful login
+          // Redirect to the hosted chat page after successful login
           window.location.href = "https://aura-x4bd.onrender.com/";
         } else {
           alert("Login failed: " + res.status);
